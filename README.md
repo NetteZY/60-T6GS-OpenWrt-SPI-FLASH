@@ -2,10 +2,12 @@
 
 This is a custom OpenWrt firmware built specifically for the **16MB SPI NOR flash** on the Qihoo 360 T6GS. 
 
-## The Bootloop Problem
-Most 360 T6GS firmwares are built for the 128MB NAND flash. However, the generic MT7621 Breed bootloader only supports flashing to SPI NOR. If you try to flash a standard NAND firmware through Breed, your router will bootloop because Breed writes to the NOR chip while the kernel expects the OS to be on the NAND chip.
+for when your nand is dead and router is bootlooping
 
-This release fixes the issue by bypassing the NAND completely. It uses the `jedec,spi-nor` driver so you can flash OpenWrt directly from Breed without needing a custom U-Boot.
+## The Bootloop Problem
+Most 360 T6GS firmwares are built for the 128MB NAND flash. When you try to flash a standard NAND firmware through Breed, your router will bootloop because Breed writes to the NOR chip while the kernel expects the OS to be on the NAND chip.
+
+This release fixes the issue by bypassing the NAND completely. It uses the `jedec,spi-nor` driver so you can flash OpenWrt directly from Breed.
 
 ## Installation
 1. Boot into Breed (Hold reset while plugging in power).
